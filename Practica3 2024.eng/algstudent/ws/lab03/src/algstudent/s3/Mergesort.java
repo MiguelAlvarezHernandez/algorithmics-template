@@ -19,17 +19,15 @@ public class Mergesort {
 		int sizeX = x2 - x1 + 1;
         int sizeY = y2 - y1 + 1;
 
-        // Temporary arrays
         int[] x = new int[sizeX];
         int[] y = new int[sizeY];
 
-        // Copy data to temporary arrays
         System.arraycopy(elements, x1, x, 0, sizeX);
         System.arraycopy(elements, y1, y, 0, sizeY);
 
-        // Merge the temp arrays back into the original array
+        
         int i = 0, j = 0;
-        int k = x1; // Initial index of merged subarray
+        int k = x1; 
         while (i < sizeX && j < sizeY) {
             if (x[i] <= y[j]) {
                 elements[k] = x[i];
@@ -41,14 +39,12 @@ public class Mergesort {
             k++;
         }
 
-        // Copy remaining elements of x[] if any
         while (i < sizeX) {
             elements[k] = x[i];
             i++;
             k++;
         }
 
-        // Copy remaining elements of y[] if any
         while (j < sizeY) {
             elements[k] = y[j];
             j++;

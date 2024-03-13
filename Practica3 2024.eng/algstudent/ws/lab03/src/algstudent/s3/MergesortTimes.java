@@ -25,10 +25,10 @@ public class MergesortTimes {
 
 			System.out.println(n + "\t" + (t2 - t1));
 			
-			int[] array = {9, 7, 5, 11, 12, 2, 14, 3, 10, 6, 20, 31, 18, 77, 44, 55, 66, 88, 99, 102, 100};
-
-	        System.out.println("Original array:");
-	        printArray(v);
+//			int[] array = {9, 7, 5, 11, 12, 2, 14, 3, 10, 6, 20, 31, 18, 77, 44, 55, 66, 88, 99, 102, 100};
+//
+//	        System.out.println("Original array:");
+//	        printArray(v);
 	        
 	        
 		}
