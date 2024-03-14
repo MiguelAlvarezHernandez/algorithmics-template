@@ -1,0 +1,7 @@
+n = 256 *** time = 31 milliseconds)
+n = 512 *** time = 156 milliseconds)
+n = 1024 *** time = 593 milliseconds)
+n = 2048 *** time = 2421 milliseconds)
+n = 4096 *** time = 9546 milliseconds)
+n = 8192 *** time = 40279 milliseconds)
+n = 16384 *** time = 201150 milliseconds)
