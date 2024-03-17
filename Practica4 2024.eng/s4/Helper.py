@@ -18,8 +18,8 @@ def printMatrix(m):
         print()
     print()
 
-m=createMatrix(4,0)
-printMatrix(m)
+#m=createMatrix(4,0)
+#printMatrix(m)
 
 def triangularMatrixRandomIntegers(n,lower,higher):
     """Generates and returns a triangular matrix (i<j) of
@@ -30,8 +30,8 @@ def triangularMatrixRandomIntegers(n,lower,higher):
             m[i][j]=random.randint(lower,higher)
     return m
 
-m=triangularMatrixRandomIntegers(16,100,999)
-printMatrix(m)
+#m=triangularMatrixRandomIntegers(16,100,999)
+#printMatrix(m)
 
 def triangularMatrixFromFile(file):
     """Generates and returns a triangular matrix (i<j) that
@@ -50,8 +50,8 @@ def triangularMatrixFromFile(file):
     fi.close()
     return m
 
-m=triangularMatrixFromFile("graph8.txt")
-printMatrix(m)
+#m=triangularMatrixFromFile("graph8.txt")
+#printMatrix(m)
 
 
 

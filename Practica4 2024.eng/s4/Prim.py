@@ -22,9 +22,9 @@ def complete_graph_from_triangular(m):
 def prim_algorithm(graph):
     """Implements Prim's algorithm on a given graph represented as a complete matrix."""
     n = len(graph)
-    selected_node = [False] * n     #array of booleans to know if the nodes are visited or not
+    visited_node = [False] * n     #array of booleans to know if the nodes are visited or not
     num_edges = 0                   #counter of the nodes visited
-    selected_node[0] = True
+    visited_node[0] = True
     mst_edges = []                  #mst = minimun spanning tree
 
     while num_edges < n - 1:
@@ -32,15 +32,15 @@ def prim_algorithm(graph):
         x = 0                   #origin node
         y = 0                   #destination node
         for i in range(n):
-            if selected_node[i]:
+            if visited_node[i]:
                 for j in range(n):
-                    if not selected_node[j] : #and graph[i][j]   #if it is not visited
+                    if not visited_node[j] : #and graph[i][j]   #if it is not visited
                         if minimum > graph[i][j]:    #if the weight is lower change
                             minimum = graph[i][j]
                             x = i
                             y = j
         mst_edges.append((x, y, graph[x][y]))   #add the source and destination nodes and the weight
-        selected_node[y] = True      #now the selected node is visited
+        visited_node[y] = True      #now the selected node is visited
         num_edges += 1               #increment counter
 
     return mst_edges
@@ -67,7 +67,7 @@ if __name__ == "__main__":
 def prim_algorithm_optimized(graph):
     """Implementación optimizada del algoritmo de Prim con complejidad O(n^2)."""
     n = len(graph)
-    selected = [False] * n              # array of booleans to know if the nodes are visited or not
+    visited_node = [False] * n              # array of booleans to know if the nodes are visited or not
     min_weight = [float('inf')] * n     # Array to store the minimun cost to reach a node
     parent = [-1] * n                   # Array to store the source node with the minimun cost to reach the searched node
 
@@ -75,12 +75,12 @@ def prim_algorithm_optimized(graph):
 
     for _ in range(n):
         # Find the node with the minimun weight to start with
-        u = min_weight.index(min(min_weight[i] for i in range(n) if not selected[i]))
-        selected[u] = True              #now the selected node is visited
+        u = min_weight.index(min(min_weight[i] for i in range(n) if not visited_node[i]))
+        visited_node[u] = True              #now the selected node is visited
 
         # Upload the matrices of information parent and weight
         for v in range(n):
-            if 0 < graph[u][v] < min_weight[v] and not selected[v]:
+            if 0 < graph[u][v] < min_weight[v] and not visited_node[v]:
                 parent[v] = u
                 min_weight[v] = graph[u][v]
 
