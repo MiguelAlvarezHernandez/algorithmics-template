@@ -47,7 +47,7 @@ public class PatternMatching {
 
     public void printsTable() {
         // Simplified debug/info print
-        System.out.println("DP table for: " + text + " (Printing whether matched or not)");
+        System.out.println("DP table for: " + text);
         for (int i = 0; i < dp.length; i++) {
             for (int j = 0; j < dp[i].length; j++) {
                 System.out.print(dp[i][j] ? "T " : "F ");

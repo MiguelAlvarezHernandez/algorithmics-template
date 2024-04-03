@@ -20,7 +20,8 @@ public class PatternMatchingTest {
 	public void test1() {
 		loadData("src/algstudent/s5/test01.txt");		
 		PatternMatching patternMatching = new PatternMatching(text);		
-		for (int i = 0; i < patterns.size(); i++) {			
+		for (int i = 0; i < patterns.size(); i++) {		
+			System.out.println("Pattern: " + patterns.get(i));
 			patternMatching.checkPattern(patterns.get(i));
 			assertEquals(expectedResults.get(i), patternMatching.checkPattern(patterns.get(i)));
 			patternMatching.printsTable();	
@@ -32,7 +33,7 @@ public class PatternMatchingTest {
 		loadData("src/algstudent/s5/test02.txt");		
 		PatternMatching patternMatching = new PatternMatching(text);
 		for (int i = 0; i < patterns.size(); i++) {	
-			System.out.println(patterns.get(i));
+			System.out.println("Pattern: " + patterns.get(i));
 			assertEquals(expectedResults.get(i), patternMatching.checkPattern(patterns.get(i)));
 			patternMatching.printsTable();	
 		}
@@ -42,7 +43,8 @@ public class PatternMatchingTest {
 	public void test3() {
 		loadData("src/algstudent/s5/test03.txt");		
 		PatternMatching patternMatching = new PatternMatching(text);		
-		for (int i = 0; i < patterns.size(); i++) {			
+		for (int i = 0; i < patterns.size(); i++) {	
+			System.out.println("Pattern: " + patterns.get(i));
 			assertEquals(expectedResults.get(i), patternMatching.checkPattern(patterns.get(i)));
 			patternMatching.printsTable();	
 		}
