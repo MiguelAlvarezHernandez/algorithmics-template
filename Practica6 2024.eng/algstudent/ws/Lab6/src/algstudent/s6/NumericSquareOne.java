@@ -8,6 +8,7 @@ import java.io.IOException;
 public class NumericSquareOne {
 
     private static String[][] board;
+    private static String[][] boardVertical;
 
     private static int size;
     
@@ -61,7 +62,7 @@ public class NumericSquareOne {
         }
 
         if (row == size) {
-        	if (checkSolutionsRow(board, size)) {
+        	if (checkSolutions(board, size)) {
                 printBoard(board, size);
                 solutionFound = true;
             }
@@ -85,7 +86,7 @@ public class NumericSquareOne {
         }
     }
     
-    public static boolean checkSolutionsRow(String[][] board, int size) {
+    public static boolean checkSolutions(String[][] board, int size) {
         for (int i = 0; i < board.length -1; i+=2) {
             int resultRow = Integer.parseInt(board[i][board[i].length - 1]);
             int sumRow = 0;
@@ -117,27 +118,60 @@ public class NumericSquareOne {
         }
         
         for (int j = 0; j < size; j++) {
-            int result = Integer.parseInt(board[size][j]);
+            int result = Integer.parseInt(board[board[j].length - 1][j]);
             int sum = 0;
             for (int i = 0; i < size; i++) {
+            	if( i != 0 && i%2 == 0 && j >= (size-1)/2 -1) {
+            		break;
+            	}
                 if (board[i][j] != null) {
                     if (board[i][j].equals("+")) {
-                        sum += Integer.parseInt(board[i][j + 1]);
+                    	if (j != 0) {
+                    		sum += Integer.parseInt(board[i+1][j * 2 ]);
+                    		
+                    	}else {
+                    		sum += Integer.parseInt(board[i+1][j]);
+                    	}
+                    	
                         i++;
                     } else if (board[i][j].equals("-")) {
-                        sum -= Integer.parseInt(board[i][j + 1]);
+                    	if (j != 0) {
+                    		sum -= Integer.parseInt(board[i+1][j * 2 ]);
+                    	}else {
+                    		sum -= Integer.parseInt(board[i+1][j]);
+                    	}
+                    	
                         i++;
                     } else if (board[i][j].equals("*")) {
-                        sum *= Integer.parseInt(board[i][j + 1]);
+                    	if (j != 0) {
+                    		sum *= Integer.parseInt(board[i+1][j * 2 ]);
+                    	}else {
+                    		sum /= Integer.parseInt(board[i+1][j]);
+                    	}
+                    	
                         i++;
                     } else if (board[i][j].equals("/")) {
-                        sum /= Integer.parseInt(board[i][j + 1]);
+                    	if (j != 0) {
+                    		sum /= Integer.parseInt(board[i+1][j * 2 ]);
+                    	}else {
+                    		sum /= Integer.parseInt(board[i+1][j]);
+                    	}
                         i++;
+                    } else if (board[i][j].equals("=")) {
+                    	break;
                     } else {
-                        sum += Integer.parseInt(board[i][j]);
+                    	if (j != 0) {
+                    		sum += Integer.parseInt(board[i][j*2]);
+                    	}
+                    	else {
+                    		sum += Integer.parseInt(board[i][j]);
+                    	}
                     }
                 }
             }
+//            for(i = 0; i < n - 2; i++)
+//            	if i%2 != 0:
+            		
             if (sum != result) {
                 return false;
             }
@@ -145,35 +179,20 @@ public class NumericSquareOne {
         return true;
     }
     
-    public static boolean checkSolutionsCol(String[][] board, int size) {
-    	for (int j = 0; j < size; j++) {
-            int result = Integer.parseInt(board[size][j]);
-            int sum = 0;
-            for (int i = 0; i < size; i++) {
-                if (board[i][j] != null) {
-                    if (board[i][j].equals("+")) {
-                        sum += Integer.parseInt(board[i][j + 1]);
-                        i++;
-                    } else if (board[i][j].equals("-")) {
-                        sum -= Integer.parseInt(board[i][j + 1]);
-                        i++;
-                    } else if (board[i][j].equals("*")) {
-                        sum *= Integer.parseInt(board[i][j + 1]);
-                        i++;
-                    } else if (board[i][j].equals("/")) {
-                        sum /= Integer.parseInt(board[i][j + 1]);
-                        i++;
-                    } else {
-                        sum += Integer.parseInt(board[i][j]);
-                    }
-                }
-            }
-            if (sum != result) {
-                return false;
-            }
-        }
-        return true;
+    public static void verticalizeBoard() {
+    	boardVertical = new String[size][size];
+    	 for (int i = 0; i < board.length ; i++) {
+    		 if (i%2 == 0) {
+    			 boardVertical[i] = board[i];
+    		 }else {
+	             for (int j = 0; j < board[i].length/2; j++) {
+	            	 boardVertical[i][2*j] = board[i][j];
+	            	 
+	             }
+    		 }
     }
+    }
+    
 
     public static void printBoard(String[][] board, int size) {
         for (int i = 0; i < size; i++) {
