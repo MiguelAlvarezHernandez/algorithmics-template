@@ -53,15 +53,8 @@ def print_mst(mst):
     for edge in mst:
         print(f"Edge from {edge[0]} to {edge[1]} with weight {edge[2]}")
 
-def main(filename):
-    graph = Helper.triangularMatrixFromFile(filename)
-    complete_graph = complete_graph_from_triangular(graph)
-    mst = prim_algorithm(complete_graph)
-    print_mst(mst)
 
-if __name__ == "__main__":
-    filename = input("Enter the filename: ")
-    main(filename)
+
 
 
 def prim_algorithm_optimized(graph):
@@ -90,3 +83,15 @@ def prim_algorithm_optimized(graph):
         mst_edges.append((parent[i], i, graph[parent[i]][i]))
 
     return mst_edges
+
+
+def main(filename):
+    graph = Helper.triangularMatrixFromFile(filename)
+    complete_graph = complete_graph_from_triangular(graph)
+    mst = prim_algorithm_optimized(complete_graph)
+    print_mst(mst)
+
+
+if __name__ == "__main__":
+    filename = input("Enter the filename: ")
+    main(filename)
