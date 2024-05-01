@@ -17,7 +17,7 @@ public class NumericSquareOne {
     public static void main(String[] args) {
     	long t1 = 0, t2 = 0;
         try {
-            readBoardFromFile("src/algstudent/s6/test07.txt"); // Change the filename accordingly
+            readBoardFromFile("src/algstudent/s6/test00.txt"); // Change the filename accordingly
 //            printBoard(board, size);
 //            System.out.println();
             verticalizeBoard();
@@ -143,10 +143,14 @@ public class NumericSquareOne {
                         sumRow *= Integer.parseInt(board[i][j + 1]);
                         j++;
                     } else if (board[i][j].equals("/")) {
+                    	
                     	if (board[i][j + 1].equals("0")) {
-                    		continue;
+                    		return false;
                     	}else {
-                    		sumRow /= Integer.parseInt(board[i][j + 1]);
+                    		if(sumRow % Integer.parseInt(board[i][j + 1])== 0)
+                    			sumRow /= Integer.parseInt(board[i][j + 1]);
+                			else return false;
+                    		//sumRow /= Integer.parseInt(board[row][j + 1]);
                     	}
                         j++;
                     } else if (board[i][j].equals("=")) {
@@ -210,12 +214,19 @@ public class NumericSquareOne {
               	
                   i++;
               } else if (board[i][j].equals("/")) {
-              	
-              		if (board[i+1][j].equals("0")) {
-                		continue;
-                	}else {
-              		sum /= Integer.parseInt(board[i+1][j]);
-                	}
+            	  if (board[i+1][j].equals("0")) {
+              		return false;
+              	}else {
+              		if(sum % Integer.parseInt(board[i+1][j])== 0)
+              			sum /= Integer.parseInt(board[i+1][j]);
+          			else return false;
+              		//sum /= Integer.parseInt(board[i+1][col]);
+              	}
+//              		if (board[i+1][j].equals("0")) {
+//                		continue;
+//                	}else {
+//              		sum /= Integer.parseInt(board[i+1][j]);
+//                	}
               	
                   i++;
               } else if (board[i][j].equals("=")) {
@@ -262,9 +273,14 @@ public class NumericSquareOne {
                 	
                     i++;
                 } else if (board[i][col].equals("/")) {
-                	
-                		sum /= Integer.parseInt(board[i+1][col]);
-                	
+                	if (board[i+1][col].equals("0")) {
+                		return false;
+                	}else {
+                		if(sum % Integer.parseInt(board[i+1][col])== 0)
+                			sum /= Integer.parseInt(board[i+1][col]);
+            			else return false;
+                		//sum /= Integer.parseInt(board[i+1][col]);
+                	}
                     i++;
                 } else if (board[i][col].equals("=")) {
                 	break;
@@ -298,9 +314,12 @@ public class NumericSquareOne {
                     j++;
                 } else if (board[row][j].equals("/")) {
                 	if (board[row][j + 1].equals("0")) {
-                		continue;
+                		return false;
                 	}else {
-                		sumRow /= Integer.parseInt(board[row][j + 1]);
+                		if(sumRow % Integer.parseInt(board[row][j + 1])== 0)
+                			sumRow /= Integer.parseInt(board[row][j + 1]);
+            			else return false;
+                		//sumRow /= Integer.parseInt(board[row][j + 1]);
                 	}
                     j++;
                 } else if (board[row][j].equals("=")) {
