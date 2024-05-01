@@ -13,11 +13,11 @@ public class NumericSquareOne {
     private static int size;
     
     static boolean solutionFound = false;
-
+    private static int counterNodes;
     public static void main(String[] args) {
     	long t1 = 0, t2 = 0;
         try {
-            readBoardFromFile("src/algstudent/s6/test00.txt"); // Change the filename accordingly
+            readBoardFromFile("src/algstudent/s6/test07.txt"); // Change the filename accordingly
 //            printBoard(board, size);
 //            System.out.println();
             verticalizeBoard();
@@ -26,6 +26,7 @@ public class NumericSquareOne {
             solve();
             t2 = System.currentTimeMillis();
             //printBoard(board, size);
+            System.out.println(counterNodes);
             
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
@@ -66,6 +67,7 @@ public class NumericSquareOne {
     }
 
     public static void backtrack( int row, int col) {
+    	counterNodes++;
         if (solutionFound) {
             return;
         }

@@ -20,7 +20,7 @@ public class NumericSquareAll {
 	    public static void main(String[] args) {
 	    	long t1 = 0, t2 = 0;
 	        try {
-	            readBoardFromFile("src/algstudent/s6/test06.txt"); // Change the filename accordingly
+	            readBoardFromFile("src/algstudent/s6/test00.txt"); // Change the filename accordingly
 //	            printBoard(board, size);
 //	            System.out.println();
 	            verticalizeBoard();
